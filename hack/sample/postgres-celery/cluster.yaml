@@ -24,20 +24,24 @@ spec:
   redis:
     operator: False
   scheduler:
-    version: "1.10.2"
+    image: "docker.io/vedantm/docker-airflow"
+    version: "latest"
   ui:
+    image: "docker.io/vedantm/docker-airflow"
     replicas: 1
-    version: "1.10.2"
+    version: "latest"
   worker:
+    image: "docker.io/vedantm/docker-airflow"
     replicas: 2
-    version: "1.10.2"
+    version: "latest"
   flower:
+    image: "docker.io/vedantm/docker-airflow"
     replicas: 1
-    version: "1.10.2"
+    version: "latest"
   dags:
-    subdir: "airflow/example_dags/"
+    subdir: "airflow/dags/"
     git:
-      repo: "https://github.com/apache/incubator-airflow/"
+      repo: "https://github.com/VedantMahabaleshwarkar/airflow-dags"
       once: true
   airflowbase:
     name: pc-base

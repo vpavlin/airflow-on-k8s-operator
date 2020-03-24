@@ -248,7 +248,7 @@ EOSQL
 	ss.Spec.Template.Spec.InitContainers = append(containers, ss.Spec.Template.Spec.InitContainers...)
 }
 
-func addPostgresUserDBContainer(r *alpha1.AirflowCluster, ss *appsv1.StatefulSet) {
+func addPostgresUserDBContainer(r *alpha1.AirflowCluster, ss *appsv1.StatefulSet, image_tag string) {
 	sqlRootSecret := common.RsrcName(r.Spec.AirflowBaseRef.Name, common.ValueAirflowComponentSQL, "")
 	sqlSvcName := common.RsrcName(r.Spec.AirflowBaseRef.Name, common.ValueAirflowComponentSQL, "")
 	sqlSecret := common.RsrcName(r.Name, common.ValueAirflowComponentUI, "")
@@ -263,7 +263,7 @@ func addPostgresUserDBContainer(r *alpha1.AirflowCluster, ss *appsv1.StatefulSet
 	containers := []corev1.Container{
 		{
 			Name:    "postgres-dbcreate",
-			Image:   alpha1.DefaultPostgresImage + ":" + alpha1.DefaultPostgresVersion,
+			Image:   image_tag,
 			Env:     env,
 			Command: []string{"/bin/bash"},
 			Args: []string{"-c", `
@@ -512,7 +512,7 @@ func (s *UI) sts(o *reconciler.Object, v interface{}) {
 	sts, r := updateSts(o, v)
 	sts.Spec.Template.Spec.Containers[0].Resources = r.Cluster.Spec.UI.Resources
 	if IsPostgres(&r.Base.Spec) {
-		addPostgresUserDBContainer(r.Cluster, sts)
+		addPostgresUserDBContainer(r.Cluster, sts, r.Base.Spec.Postgres.Image+":"+r.Base.Spec.Postgres.Version)
 	} else {
 		addMySQLUserDBContainer(r.Cluster, sts)
 	}

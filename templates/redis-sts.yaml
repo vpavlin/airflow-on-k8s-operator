@@ -69,7 +69,7 @@ spec:
               key: password
               name: {{.SecretName}}
         image: {{.Cluster.Spec.Redis.Image}}:{{.Cluster.Spec.Redis.Version}}
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
