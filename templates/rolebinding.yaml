@@ -27,7 +27,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   # TODO - restrict this to manager-role with pod creation
-  name: cluster-admin
+  name: airflow-on-k8s-operator-manager-role
 subjects:
 - kind: ServiceAccount
   name: {{.Name}}
