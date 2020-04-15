@@ -30,7 +30,7 @@ spec:
     image: "docker.io/vedantm/docker-airflow"
     replicas: 1
     version: "latest"
-    enableroutes: "True"
+    enableroutes: true
   worker:
     image: "docker.io/vedantm/docker-airflow"
     replicas: 2
@@ -40,7 +40,7 @@ spec:
     image: "docker.io/vedantm/docker-airflow"
     replicas: 1
     version: "latest"
-    enableroutes: "True"
+    enableroutes: true
   dags:
     subdir: "airflow/dags/"
     git:

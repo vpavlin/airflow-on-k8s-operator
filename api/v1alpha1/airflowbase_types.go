@@ -294,7 +294,7 @@ type AirflowUISpec struct {
 	// +optional
 	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
 
-	EnableRoutes string `json:"enableroutes,omitempty"`
+	EnableRoutes bool `json:"enableroutes,omitempty"`
 }
 
 func (s *AirflowUISpec) validate(fp *field.Path) field.ErrorList {

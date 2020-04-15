@@ -48,6 +48,7 @@ const (
 	defaultWorkerVersion    = "1.10.2"
 	defaultSchedulerVersion = "1.10.2"
 	defaultWorkerForceRoot  = "false"
+	defaultEnableRoutes     = false
 )
 
 var (
@@ -189,7 +190,7 @@ type FlowerSpec struct {
 	// +optional
 	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
 
-	EnableRoutes string `json:"enableroutes,omitempty"`
+	EnableRoutes bool `json:"enableroutes,omitempty"`
 }
 
 func (s *FlowerSpec) validate(fp *field.Path) field.ErrorList {

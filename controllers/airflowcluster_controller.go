@@ -509,7 +509,7 @@ func (s *UI) Objects(rsrc interface{}, rsrclabels map[string]string, observed, d
 
 	bag := k8s.NewObjects()
 	bag.WithValue(ngdata)
-	if r.Spec.UI.EnableRoutes == "True" {
+	if r.Spec.UI.EnableRoutes == true {
 		bag.WithTemplate("route.yaml", &routev1.RouteList{})
 	}
 
@@ -816,7 +816,7 @@ func (s *Flower) Objects(rsrc interface{}, rsrclabels map[string]string, observe
 
 	bag := k8s.NewObjects()
 	bag.WithValue(ngdata)
-	if r.Spec.Flower.EnableRoutes == "True" {
+	if r.Spec.Flower.EnableRoutes == true {
 		bag.WithTemplate("route.yaml", &routev1.RouteList{})
 	}
 

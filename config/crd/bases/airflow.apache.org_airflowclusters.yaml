@@ -930,7 +930,7 @@ spec:
               description: Spec for Flower component.
               properties:
                 enableroutes:
-                  type: string
+                  type: boolean
                 image:
                   description: Image defines the Flower Docker image.
                   type: string
@@ -1437,7 +1437,7 @@ spec:
               description: Spec for Airflow UI component.
               properties:
                 enableroutes:
-                  type: string
+                  type: boolean
                 image:
                   description: Image defines the AirflowUI Docker image.
                   type: string
